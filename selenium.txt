@@ -1,0 +1,85 @@
+package Testng;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class Selenium {
+	
+		
+		WebDriver driver;
+
+
+		@BeforeClass
+	public void invokeBrowser()
+	    	{
+			driver = new ChromeDriver();
+	             System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+	             DesiredCapabilities capabilitiesIE = DesiredCapabilities.chrome();
+	capabilitiesIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+	               
+	 
+	            driver = new ChromeDriver(capabilitiesIE);
+	    	
+		
+		driver.get("http://www.adslot.com");
+		 
+	    	}
+	@Test
+	    public void locations ()
+
+	{
+		
+		driver.findElement(By.linkText("Careers")).click();
+
+		  List <WebElement> loclist = driver.findElements(By.xpath("//span/h4")); 
+		 
+System.out.println(“No of locations” + loclist.size());
+
+
+	}
+
+	@Test
+
+	    public void contactus()
+	{
+
+		driver.findElement(By.linkText("Contact")).click();
+	
+	  String FN= driver.findElement(By.xpath("(//input[@id='first_name']")).getText();
+System.out.println(“First field is ” + FN);
+
+	
+	  String LN= driver.findElement(By.xpath("(//input[@id='last _name']")).getText();
+System.out.println(“Last name field is ” + LN);
+
+	
+	String Comp= driver.findElement(By.xpath("//input[@id='company']")).getText();
+System.out.println(“Company field is ” + Comp);
+
+			
+@AfterClass (alwaysRun=true)
+	public void closebrowser()
+	{
+	driver.quit();
+         } 
+
+
+	}
+
+	
+	   }
+
+
+	     
+
+
+ 
