@@ -1,0 +1,13 @@
+Public static void main(String[] args)
+{
+String  name= “2”;
+If (!((name>=’a’ && name <=’z’) ||(name >=’A’ && name <=’Z’))&& name!=’ ‘)
+{
+System.out.println(“valid data: name is :’ +name);
+}
+Else
+{
+System.out.println(“Invalid name. Check the field”);
+}
+
+}
